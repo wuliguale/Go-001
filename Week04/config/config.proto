@@ -1,0 +1,15 @@
+syntax = "proto3";
+package config.example.v1;
+
+import "google/protobuf/wrappers.proto";
+option go_package = ".;example";
+
+//使用yml定义配置文件
+//使用pb定义内部使用的配置结构
+//需要将yml转换为pb定义的结构体
+
+message example_config {
+    string address = 1;
+    google.protobuf.StringValue password = 2;
+    google.protobuf.Int64Value timeout = 3;
+}

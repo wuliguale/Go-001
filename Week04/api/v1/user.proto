@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package helloworld;
+
+import "google/api/annotations.proto";
+
+option go_package = "github.com/go-kratos/service-layout/api/user;helloworld";
+
+//使用pb定义接口，省了文档，还能生成代码
+
+service Greeter {
+  rpc GetUser (int) returns (UserRead)  {}
+  rpc SaveUser (userWrite) returns () {}
+}
+
+
+//读写使用不同的对象，因为需要的字段可能不一样
+message UserRead {
+   int id;
+   string name;
+   int age;
+}
+
+message UserWrite {
+    string name;
+    int age;
+    string password;
+}
